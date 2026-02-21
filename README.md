@@ -1,16 +1,32 @@
-# React + Vite
+## Career Portal — це платформа, де користувач може:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- зареєструватися або увійти через безпечну авторизацію
+- перейти у свій особистий кабінет
+- заповнити анкету кандидата
+- надіслати заявку до HR-відділу
+- отримати підтвердження про успішну відправку
+Дані анкети зберігаються у базі даних MongoDB.
 
-Currently, two official plugins are available:
+## Технології
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Frontend
+- React (Vite)
+- Auth0 (автентифікація)
+- CSS 
 
-## React Compiler
+## Backend
+- Node.js
+- Express
+- MongoDB (Mongoose)
+- dotenv
+- cors
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Що демонструє цей проєкт
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Розуміння клієнт-серверної архітектури
+- Роботу з REST-запитами
+- Інтеграцію стороннього сервісу автентифікації
+- Роботу з базою даних
+- Налаштування змінних середовища
+- Організацію структури full-stack застосунку
+- Розділення frontend та backend логіки
