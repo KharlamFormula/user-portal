@@ -27,7 +27,7 @@ const messageSchema = {
 const Message = mongoose.model('MyMessages', messageSchema);
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'answer.html'));
   });
 
 app.post('/', async (req, res) => {
