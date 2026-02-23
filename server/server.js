@@ -1,9 +1,11 @@
+require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 app.use(cors());
 const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -11,7 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://harlamformula_db_user:ozsXmN5q1obpuRjj@cluster0.bk8qdnv.mongodb.net/UserPortal?appName=Cluster0');
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected!"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 const messageSchema = {
     name: String,
@@ -20,6 +25,10 @@ const messageSchema = {
 }
 
 const Message = mongoose.model('MyMessages', messageSchema);
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
 
 app.post('/', async (req, res) => {
     console.log(req.body);
@@ -31,10 +40,9 @@ app.post('/', async (req, res) => {
     });
 
     await newMessage.save();
-
-    res.sendFile(path.join(__dirname, 'public', 'answer.html'));
+    res.redirect('/answer.html');
 });
 
-app.listen(5000, ()=>{
-    console.log('Server is listenning!')
-})
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});

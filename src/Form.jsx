@@ -7,7 +7,7 @@ const Form = () => {
       <form
         className='application'
         method='POST'
-        action='http://localhost:5000/'
+        action='https://user-portal-backend-66e7.onrender.com/'
       >
         <label>Ваше ім'я:</label>
         <input type='text' name='name' required />
