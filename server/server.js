@@ -17,27 +17,21 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected!"))
   .catch(err => console.error("MongoDB connection error:", err));
 
-const messageSchema = {
-    name: String,
-    email: String,
-    message: String
-}
-
+const messageSchema = { 
+  name: String, 
+  email: String, 
+  message: String 
+};
 const Message = mongoose.model('MyMessages', messageSchema);
 
-app.post('/', async (req, res) => {
-    const newMessage = new Message(req.body);
-    await newMessage.save();
-    res.json({ status: "ok" });
+app.post('/', (req, res) => {
+    let newMessage = new Message({
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message
+    }) 
+    newMessage.save()
+    res.sendFile(__dirname + '/answer.html')
 });
 
-// Віддавати React (Vite build)
-app.use(express.static(path.join(__dirname, '../dist')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/answer.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
