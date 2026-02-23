@@ -3,14 +3,13 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-app.use(cors());
 const path = require('path');
-const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
 
 mongoose.set('strictQuery', false);
 
@@ -26,21 +25,17 @@ const messageSchema = {
 
 const Message = mongoose.model('MyMessages', messageSchema);
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'answer.html'));
-  });
-
 app.post('/', async (req, res) => {
-    console.log(req.body);
-
-    const newMessage = new Message({
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message
-    });
-
+    const newMessage = new Message(req.body);
     await newMessage.save();
-    res.redirect('/answer.html');
+    res.json({ status: "ok" });
+});
+
+// Віддавати React (Vite build)
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/answer.html'));
 });
 
 app.listen(PORT, () => {
