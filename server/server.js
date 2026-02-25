@@ -24,14 +24,12 @@ const messageSchema = {
 };
 const Message = mongoose.model('MyMessages', messageSchema);
 
-app.post('/', (req, res) => {
-    let newMessage = new Message({
-      name: req.body.name,
-      email: req.body.email,
-      message: req.body.message
-    }) 
-    newMessage.save()
-    res.sendFile(__dirname + '/answer.html')
+app.use(express.static(path.join(__dirname, '../dist'))); 
+
+app.post('/', async (req, res) => {
+  const newMessage = new Message(req.body);
+  await newMessage.save();
+  res.json({ status: "ok" });
 });
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
