@@ -1,4 +1,4 @@
-require('dotenv').config({ path: __dirname + '/.env' });
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -28,24 +28,22 @@ const Message = mongoose.model('MyMessages', messageSchema);
 
 app.post('/api/messages', async (req, res) => {
   try {
+    console.log("BODY:", req.body); 
     const newMessage = new Message(req.body);
     await newMessage.save();
+    console.log("Saved to MongoDB ✅");
     res.status(200).json({ status: "ok" });
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Save error:", error);
     res.status(500).json({ status: "error" });
   }
 });
 
-app.use(express.static(path.join(__dirname, '../dist')));
+const frontendPath = path.join(__dirname, '../dist');
+app.use(express.static(frontendPath));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
-
-app.get('/', (req, res) => {
-  res.send('Backend працює 🚀');
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
