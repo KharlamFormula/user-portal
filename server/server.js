@@ -42,8 +42,7 @@ app.post('/api/messages', async (req, res) => {
 const frontendPath = path.join(__dirname, '../dist');
 app.use(express.static(frontendPath));
 
-app.get(/.*/, function(req, res) {
-  
+app.get(/.*/, (req, res) => {
   if (req.path.startsWith('/api')) return res.status(404).send('Not Found');
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
