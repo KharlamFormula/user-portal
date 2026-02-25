@@ -28,7 +28,7 @@ const Message = mongoose.model('MyMessages', messageSchema);
 
 app.post('/api/messages', async (req, res) => {
   try {
-    console.log("BODY:", req.body); 
+    console.log("BODY:", req.body);
     const newMessage = new Message(req.body);
     await newMessage.save();
     console.log("Saved to MongoDB ✅");
@@ -42,7 +42,8 @@ app.post('/api/messages', async (req, res) => {
 const frontendPath = path.join(__dirname, '../dist');
 app.use(express.static(frontendPath));
 
-app.get('/*', (req, res) => {
+app.get('*', function(req, res) {
+  if (req.path.startsWith('/api')) return res.status(404).send('Not Found');
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
