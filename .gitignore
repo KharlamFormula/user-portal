@@ -1,13 +1,7 @@
-# Node modules
 node_modules
 
-# Build artifacts
 dist
-frontend/dist
-server/dist
 
-# Environment files
 .env
 
-# Logs
 *.log
