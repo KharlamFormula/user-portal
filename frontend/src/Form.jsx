@@ -44,7 +44,7 @@ const Form = () => {
     return (
       <div>
         <h2>Дякуємо!</h2>
-        <p>Вашу анкету успішно відправлено.</p>
+        <p className='parOnePage'>Вашу анкету успішно відправлено.</p>
         <button onClick={() => setSubmitted(false)}>
           Заповнити ще раз
         </button>
