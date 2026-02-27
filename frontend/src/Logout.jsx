@@ -9,9 +9,13 @@ const Logout = () => {
     isAuthenticated && (
       <div>
         <Form />
-        <button onClick={() => logout()}>
-          Вийти
-        </button>
+        <button onClick={() => logout({
+      logoutParams: { returnTo: window.location.origin }
+    })
+  }
+>
+  Вийти
+</button>
       </div>
     )
   );
