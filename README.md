@@ -6,7 +6,7 @@ Full-stack веб-застосунок для подачі та збережен
 ## Live Demo
 
 Frontend (Netlify):  
-https://rainbow-lokum-26caa5.netlify.app  
+https://user-portal-1-agps.onrender.com/
 
 Backend API (Render):  
 https://user-portal-39o0.onrender.com  
