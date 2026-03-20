@@ -39,7 +39,7 @@ MongoDB (база даних)
 - React Router
 - Auth0
 - Axios / Fetch API
-- Netlify (деплой)
+- Сloudflare (деплой)
 
 ### Backend
 - Node.js
