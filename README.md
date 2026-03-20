@@ -5,7 +5,7 @@ Full-stack веб-застосунок для подачі та збережен
 
 ## Live Demo
 
-Frontend (Netlify):  
+Frontend:  
 https://user-portal-1-agps.onrender.com/
 
 Backend API (Render):  
@@ -37,7 +37,7 @@ MongoDB (база даних)
 ### Frontend
 - React
 - React Router
-- Auth0 React SDK
+- Auth0
 - Axios / Fetch API
 - Netlify (деплой)
 
@@ -50,7 +50,6 @@ MongoDB (база даних)
 
 ### Безпека
 - Auth0
-- JWT-перевірка токенів
 - Middleware для захисту API-маршрутів
 - Зберігання конфіденційних даних через environment variables
   
